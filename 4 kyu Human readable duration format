@@ -1,0 +1,54 @@
+public class HumanTimeFormat{
+  public static string formatDuration(int seconds){
+  int s = seconds;
+  string ot = "";
+    if(s == 0) return "now";
+    if(s >= 31536000)
+      {
+        if(s / 31536000 == 1) ot += "1 year";
+        else ot += (s / 31536000).ToString() + " years";
+        s = s % 31536000;
+      }
+      if(s >= 86400){
+        if(s % 86400 == 0 && ot != "") 
+        {
+          if(s / 86400 == 1)return ot += " and " + (s / 86400).ToString() + " day";
+          else return ot += " and " + (s / 86400).ToString() + " days";
+        }
+        if(ot != "") ot += ", ";
+        if(s / 86400 == 1) ot += "1 day";  
+        else ot += (s / 86400).ToString() + " days";
+        s = s % 86400;
+      }
+      if(s >= 3600){
+        if(s % 3600 == 0 && ot != "") 
+        {
+          if(s / 3600 == 1)return ot += " and " + (s / 3600).ToString() + " hour";
+          else return ot += " and " + (s / 3600).ToString() + " hours";
+        }
+        if(ot != "") ot += ", ";
+        if(s / 3600 == 1) ot += "1 hour";
+        else ot += (s / 3600).ToString() + " hours";
+        s = s % 3600;
+      }
+      if(s >= 60){
+      if(s % 60 == 0 && ot != "") 
+        {
+          if(s / 60 == 1)return ot += " and " + (s / 60).ToString() + " minute";
+          else return ot += " and " + (s / 60).ToString() + " minutes";
+        }
+        if(ot != "") ot += ", ";
+        if(s / 60== 1) ot += "1 minute";
+        else ot += (s / 60).ToString() + " minutes";
+        s = s % 60;
+      }
+      if (ot != "" && s != 0){
+        if(s == 1) return ot += " and 1 second";
+        else return ot += " and " + s.ToString() + " seconds";
+        }
+      else if (s != 0){
+        if(s == 1) return ot += "1 second";
+        }
+        return ot;
+  }
+}
