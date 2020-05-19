@@ -1,0 +1,16 @@
+public class Number
+{
+  public int DigitalRoot(long n)
+  {
+  long sum = 0;
+    while(n != 0){
+      sum += n % 10;
+      n /= 10;
+      if(sum >= 10)
+        sum = sum % 10 + sum / 10;
+    }
+    int a;
+    a = (int)sum;
+    return a;
+  }
+}
